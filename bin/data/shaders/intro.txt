@@ -1,0 +1,39 @@
+#FRAGMENT_SHADER_BEGIN
+
+uniform sampler2D tex;
+
+varying float alpha;
+
+void main() {
+	float state = 10.0 * floor( alpha*0.1 );
+	float a = alpha - state;
+
+	vec4 diff = texture2D( tex, gl_TexCoord[0].st );
+
+	if ( state == 0.0 )
+		diff = vec4( diff.x, diff.x, diff.x, 1.0 );
+
+	if ( state == 10.0 )
+		diff = vec4( diff.y, diff.y, diff.y, 1.0 );
+
+	if ( state == 20.0 )
+		diff = vec4( diff.z, diff.z, diff.z, 1.0 );
+
+	gl_FragColor = diff * vec4( a );
+}
+
+#FRAGMENT_SHADER_END
+
+
+
+#VERTEX_SHADER_BEGIN
+
+varying float alpha;
+
+void main() {
+	alpha = gl_Vertex.z;
+	gl_TexCoord[0].st = gl_MultiTexCoord0.st;
+	gl_Position = gl_ModelViewProjectionMatrix * vec4( gl_Vertex.x, gl_Vertex.y, 0.0, 1.0 );
+}
+
+#VERTEX_SHADER_END

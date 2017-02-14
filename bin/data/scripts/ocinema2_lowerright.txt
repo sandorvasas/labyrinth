@@ -1,0 +1,85 @@
+numEvents 7
+
+event 1 {
+	startTime 	0.0
+	length		8.0
+	entity		camera
+	anim		none
+	actorDir	none
+	startPos	349.0 	10.0	360.0
+	endPos		349.0	10.0	338.0
+	startRot	0.0	180.0	0.0
+	endRot		0.0	180.0	0.0
+}
+
+event 2 {
+	startTime 	2.0
+	length		1.8
+	entity		monster
+	anim		monster_walk
+	actorDir	down
+	startPos	349.0 	0.0	390.0
+	endPos		349.0	0.0	390.0
+	startRot	0.0	0.0	0.0
+	endRot		0.0	0.0	0.0
+}
+
+event 3 {
+	startTime 	3.5
+	length		1.5
+	entity		monster
+	anim		monster_roar
+	actorDir	down
+	startPos	349.0 	0.0	368.0
+	endPos		349.0	0.0	368.0
+	startRot	0.0	0.0	0.0
+	endRot		0.0	0.0	0.0
+}
+
+event 4 {
+	startTime 	3.6
+	length		0.2
+	entity		sound
+	anim		monster_roar
+	actorDir	down
+	startPos	2.0 	0.0	348.0
+	endPos		2.0	0.0	348.0
+	startRot	0.0	0.0	0.0
+	endRot		0.0	0.0	0.0
+}
+
+event 5 {
+	startTime 	5.0
+	length		3.0
+	entity		monster
+	anim		monster_idle
+	actorDir	down
+	startPos	349.0 	0.0	370.0
+	endPos		349.0	0.0	370.0
+	startRot	0.0	0.0	0.0
+	endRot		0.0	0.0	0.0
+}
+
+event 6 {
+	startTime 	2.1
+	length		0.2
+	entity		sound
+	anim		monster_step1
+	actorDir	down
+	startPos	2.0 	0.0	348.0
+	endPos		2.0	0.0	348.0
+	startRot	0.0	0.0	0.0
+	endRot		0.0	0.0	0.0
+}
+
+event 7 {
+	startTime 	2.6
+	length		0.2
+	entity		sound
+	anim		monster_step2
+	actorDir	down
+	startPos	2.0 	0.0	348.0
+	endPos		2.0	0.0	348.0
+	startRot	0.0	0.0	0.0
+	endRot		0.0	0.0	0.0
+}

@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="math">
+      <UniqueIdentifier>{cc16f773-f396-4951-84c5-5aa4a32d87fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenGL">
+      <UniqueIdentifier>{98f8deb5-055e-4739-b83d-bd0af142210e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{b8c5215a-a67f-4509-9b2c-d70ed2f080ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sys">
+      <UniqueIdentifier>{1f4d7c54-84a7-4a55-9f31-60e0844f0596}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{83ce7ec2-8e92-4b6e-8d91-dcb9ca4c0410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FMOD">
+      <UniqueIdentifier>{24641a70-10f8-44ee-b0c3-ed78a434dd22}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="math\matrix.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\vector.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c" />
+    <ClCompile Include="math\quaternion.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="game\gameLocal.c">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\GLexp.c">
+      <Filter>OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="game\labyrinth.c">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\vertex.c">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\shader.c">
+      <Filter>Sys</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\texture.c">
+      <Filter>Sys</Filter>
+    </ClCompile>
+    <ClCompile Include="game\world.c">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="math\plane.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\printer.c">
+      <Filter>Sys</Filter>
+    </ClCompile>
+    <ClCompile Include="game\md5model.c">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="sys\sys.c">
+      <Filter>Sys</Filter>
+    </ClCompile>
+    <ClCompile Include="game\actor.c">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\cinematics.c">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\player.c">
+      <Filter>game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="math\matrix.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\quaternion.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\vector.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\GL.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\GL3.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\GLexp.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\GLext.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL\WGLext.h">
+      <Filter>OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="game\gameLocal.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="sys\Mem.h">
+      <Filter>Sys</Filter>
+    </ClInclude>
+    <ClInclude Include="game\world.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\labyrinth.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\vertex.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="sys\shader.h">
+      <Filter>Sys</Filter>
+    </ClInclude>
+    <ClInclude Include="sys\texture.h">
+      <Filter>Sys</Filter>
+    </ClInclude>
+    <ClInclude Include="math\plane.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="sys\printer.h">
+      <Filter>Sys</Filter>
+    </ClInclude>
+    <ClInclude Include="game\md5model.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="sys\sys.h">
+      <Filter>Sys</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod.h">
+      <Filter>FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod_codec.h">
+      <Filter>FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod_dsp.h">
+      <Filter>FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod_errors.h">
+      <Filter>FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod_memoryinfo.h">
+      <Filter>FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="fmod\fmod_output.h">
+      <Filter>FMOD</Filter>
+    </ClInclude>
+    <ClInclude Include="game\actor.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\cinematics.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\player.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\names.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\bin\data\shaders\def.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\labyrinthModel.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\intro.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\postprocess.txt">
+      <Filter>shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>

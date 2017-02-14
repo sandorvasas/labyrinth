@@ -1,0 +1,13 @@
+numEvents 1
+
+event 1 {
+	startTime 	0.0
+	length		0.1
+	entity		camera
+	anim		none
+	actorDir	none
+	startPos	1.0 	70.0	200.0
+	endPos		1.0	10.0	10.0
+	startRot	60.0	0.0	0.0
+	endRot		0.0	0.0	0.0
+}

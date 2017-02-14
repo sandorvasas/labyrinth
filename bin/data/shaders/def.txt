@@ -1,0 +1,75 @@
+#FRAGMENT_SHADER_BEGIN
+
+uniform sampler2D tex0, tex0_n;
+uniform int version;
+
+varying vec3 lightDir;
+varying vec3 normal;
+varying vec3 tangent;
+varying vec3 vertex;
+varying vec3 lightpos;
+
+void main() {
+	
+	vec4 diff0 = texture2D( tex0,	gl_TexCoord[0].st );
+	vec4 norm0 = texture2D( tex0_n, gl_TexCoord[0].st );
+
+	float brightness =  10.0 / length(vertex - lightpos) / 1.0;
+
+	vec3 N = normalize( normal );
+
+	float diff_term = dot( normalize( lightDir ), N ) * brightness;
+	float angle = acos( dot( normalize( lightDir ), N) );
+
+	if ( version > 10 ) {
+		// cell shading modification
+		if ( diff_term <= 0.33 )	  diff_term = 0.0;
+		else if ( diff_term <= 0.66 ) diff_term = 0.33;
+		else if ( diff_term <= 0.99 ) diff_term = 0.66;
+		else diff_term = 1.0;
+	}
+
+	vec4 ambient = 0.1 * diff0;
+
+	if ( abs(angle) > 1.570796 )
+		gl_FragData[ 0 ] = ambient;
+	else
+		gl_FragData[ 0 ] = diff0 * vec4( diff_term ) + ambient;
+
+	gl_FragData[ 0 ] *= 0.3 + vec4( 106.0, 96.0, 82.0, 255.0 ) / 255.0;
+	gl_FragData[ 0 ].w = 1.0;
+
+	gl_FragData[ 1 ]  = vec4( N, 1.0 );
+}
+
+#FRAGMENT_SHADER_END
+
+
+
+#VERTEX_SHADER_BEGIN
+
+uniform float time;
+uniform vec3 lightPos0;
+
+
+varying vec3 lightDir;
+varying vec3 normal;
+varying vec3 tangent;
+varying vec3 vertex;
+varying vec3 lightpos;
+
+void main() {
+	float t = time;
+
+	normal = normalize( gl_Normal.xyz );
+
+	lightDir = vec3( lightPos0.x, 0.1, lightPos0.z ) + vec3( cos( t ), sin( t ), -sin( t ) ) * 5.0 - gl_Vertex.xyz;
+
+	vertex = gl_Vertex.xyz;
+	lightpos = lightPos0;
+
+	gl_TexCoord[0].st = gl_MultiTexCoord0.st;
+	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+}
+
+#VERTEX_SHADER_END

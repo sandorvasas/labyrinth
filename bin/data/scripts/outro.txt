@@ -1,0 +1,13 @@
+numEvents 1
+
+event 1 {
+	startTime 	0.0
+	length		4.0
+	entity		sound
+	anim		theend
+	actorDir	down
+	startPos	18.0 	10.0	340.0
+	endPos		18.0	10.0	340.0
+	startRot	0.0	-150.0	0.0
+	endRot		0.0	-90.0	0.0
+}

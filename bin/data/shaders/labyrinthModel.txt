@@ -1,0 +1,112 @@
+#FRAGMENT_SHADER_BEGIN
+
+uniform sampler2D texWallDiff, texWallNorm, texWallPara;
+uniform sampler2D texFloorDiff, texFloorNorm, texFloorPara;
+uniform float time;
+
+varying vec3 lightDir;
+varying vec3 viewDir;
+varying vec3 normal;
+varying vec3 tangent;
+varying vec3 vertex;
+varying vec3 lightpos;
+
+
+const float PARA_BIAS = 0.04;
+
+void main() {
+	
+	vec4 diffusemap;
+	vec4 normalmap;
+	vec4 paramap;
+	vec2 texCoord;
+	vec3 normViewDir = normalize( viewDir );
+
+	if ( normal.y == 1.0 ) {
+		paramap = texture2D( texFloorPara, gl_TexCoord[0].st );
+		texCoord = gl_TexCoord[ 0 ].st + normViewDir.xz * ( paramap.x * PARA_BIAS - PARA_BIAS*0.5 );
+		diffusemap = texture2D( texFloorDiff, texCoord );
+		normalmap  = texture2D( texFloorNorm, texCoord);
+	}
+	else {
+		paramap = texture2D( texWallPara, gl_TexCoord[0].st );
+		texCoord = gl_TexCoord[ 0 ].st + vec2( normViewDir.x, -normViewDir.y ) * ( paramap.x * PARA_BIAS - PARA_BIAS*0.5 ) * 0.7;
+		diffusemap = texture2D( texWallDiff, texCoord );
+		normalmap  = texture2D( texWallNorm, texCoord );
+	}
+
+
+	vec3 bitangent = cross( normal, tangent );
+	mat3 TBN = mat3( normalize( tangent ), 
+					 normalize( bitangent ), 
+					 normalize( normal ) );
+
+	vec3 N = normalize( normalmap.xyz * 6.0 - 3.0 );
+	vec3 L = normalize( TBN * lightDir );
+
+	float brightness =  10.0 / length(vertex - lightpos) / 1.0;
+
+	float diff_term = dot( N, L ) * brightness;
+	float angle = acos( dot( normalize( lightDir ), normalize( normal )) );
+	
+	vec4 ambient = 0.3 * diffusemap;
+	
+	if ( abs(angle) > 1.570796 )
+		gl_FragData[ 0 ] = ambient;
+	else
+		gl_FragData[ 0 ] = diffusemap * vec4( diff_term ) + ambient;
+
+	/*if ( vertex.y > 1.0 && normal.y == 1.0 )
+		gl_FragData[ 0 ] = vec4( ( sin( vertex.x * 0.1 * vertex.z * 0.1 + time * 2.0 ) + 1.0 ) * 0.5, 
+							 (-cos( vertex.z * 0.2 + vertex.y + time * 3.0) + 1.0 ) * 0.5, 
+							 (cos( vertex.y * 0.4 + vertex.z * 0.1 + time ) + 1.0 ) * 0.5, 1.0 ) * diffusemap;
+		*/					 
+	gl_FragData[ 0 ] *= 0.3 + vec4( 106.0, 96.0, 82.0, 255.0 ) / 255.0;
+	gl_FragData[ 0 ].w = 1.0;
+
+	gl_FragData[ 1 ] = vec4( normal, 1.0 );
+}
+
+#FRAGMENT_SHADER_END
+
+
+
+#VERTEX_SHADER_BEGIN
+
+uniform float time;
+uniform vec3 lightPos0;
+uniform vec3 viewPos;
+
+
+varying vec3 lightDir;
+varying vec3 viewDir;
+
+varying vec3 normal;
+varying vec3 tangent;
+varying vec3 vertex;
+varying vec3 lightpos;
+
+void main() {
+	float t = time * 0.1;
+
+	normal = normalize( gl_Normal.xyz );
+
+	if ( normal.y == 1.0 ) tangent = vec3( -1.0, 0.0, 0.0 );
+	if ( normal.y ==-1.0 ) tangent = vec3(  1.0, 0.0, 0.0 );
+	if ( normal.x == 1.0 ) tangent = vec3(  0.0, 0.0, 1.0 );
+	if ( normal.x ==-1.0 ) tangent = vec3(  0.0, 0.0,-1.0 );
+	if ( normal.z == 1.0 ) tangent = vec3(  0.0, 1.0, 0.0 );
+	if ( normal.z ==-1.0 ) tangent = vec3(  0.0,-1.0, 0.0 );
+	
+
+	lightDir = lightPos0 - gl_Vertex.xyz;
+	viewDir  = viewPos	 - gl_Vertex.xyz,
+
+	vertex = gl_Vertex.xyz;
+	lightpos = lightPos0;
+
+	gl_TexCoord[0].st = gl_MultiTexCoord0.st;
+	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+}
+
+#VERTEX_SHADER_END

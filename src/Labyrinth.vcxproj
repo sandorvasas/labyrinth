@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6E3F546E-1E91-47DB-BD62-F7F33268FF60}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Labyrinth</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\bin</OutDir>
+    <LibraryPath>$(ProjectDir)OpenGL;$(ProjectDir)Fmod;$(LibraryPath)$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalOptions> "opengl32.lib" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;fmodex_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="game\cinematics.c" />
+    <ClCompile Include="game\gameLocal.c" />
+    <ClCompile Include="game\labyrinth.c" />
+    <ClCompile Include="game\md5model.c" />
+    <ClCompile Include="game\actor.c" />
+    <ClCompile Include="game\player.c" />
+    <ClCompile Include="game\vertex.c" />
+    <ClCompile Include="game\world.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="math\matrix.c" />
+    <ClCompile Include="math\plane.c" />
+    <ClCompile Include="math\quaternion.c" />
+    <ClCompile Include="math\vector.c" />
+    <ClCompile Include="OpenGL\GLexp.c" />
+    <ClCompile Include="sys\sys.c" />
+    <ClCompile Include="sys\printer.c" />
+    <ClCompile Include="sys\shader.c" />
+    <ClCompile Include="sys\texture.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fmod\fmod.h" />
+    <ClInclude Include="fmod\fmod_codec.h" />
+    <ClInclude Include="fmod\fmod_dsp.h" />
+    <ClInclude Include="fmod\fmod_errors.h" />
+    <ClInclude Include="fmod\fmod_memoryinfo.h" />
+    <ClInclude Include="fmod\fmod_output.h" />
+    <ClInclude Include="game\cinematics.h" />
+    <ClInclude Include="game\gameLocal.h" />
+    <ClInclude Include="game\labyrinth.h" />
+    <ClInclude Include="game\md5model.h" />
+    <ClInclude Include="game\actor.h" />
+    <ClInclude Include="game\names.h" />
+    <ClInclude Include="game\player.h" />
+    <ClInclude Include="game\vertex.h" />
+    <ClInclude Include="game\world.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="math\matrix.h" />
+    <ClInclude Include="math\plane.h" />
+    <ClInclude Include="math\quaternion.h" />
+    <ClInclude Include="math\vector.h" />
+    <ClInclude Include="OpenGL\GL.h" />
+    <ClInclude Include="OpenGL\GL3.h" />
+    <ClInclude Include="OpenGL\GLexp.h" />
+    <ClInclude Include="OpenGL\GLext.h" />
+    <ClInclude Include="OpenGL\WGLext.h" />
+    <ClInclude Include="sys\sys.h" />
+    <ClInclude Include="sys\Mem.h" />
+    <ClInclude Include="sys\printer.h" />
+    <ClInclude Include="sys\shader.h" />
+    <ClInclude Include="sys\texture.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\bin\data\shaders\def.txt" />
+    <None Include="..\bin\data\shaders\intro.txt" />
+    <None Include="..\bin\data\shaders\labyrinthModel.txt" />
+    <None Include="..\bin\data\shaders\postprocess.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

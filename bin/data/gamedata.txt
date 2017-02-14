@@ -1,0 +1,30 @@
+numModels 2
+numAnims  8
+numSounds 7
+
+models {
+	zombie		data/models/zfat/zfat.md5mesh
+	monster		data/models/hellknight/hellknight.md5mesh
+}
+
+
+anims {
+	zombie_walk	data/models/zfat/anim/walk3.md5anim
+	zombie_angry	data/models/zfat/anim/pipeidle.md5anim
+	zombie_attack	data/models/zfat/anim/attack3.md5anim
+	zombie_idle	data/models/zfat/anim/idle1.md5anim
+	monster_attack	data/models/hellknight/anim/attack2.md5anim
+	monster_walk	data/models/hellknight/anim/walk7.md5anim
+	monster_roar	data/models/hellknight/anim/roar1.md5anim
+	monster_idle	data/models/hellknight/anim/stand.md5anim
+}
+
+sounds {
+	bgmusic		data/sounds/bgmusic.mp3
+	monster_roar	data/sounds/monster_roar.wav
+	monster_step1	data/sounds/monster_step1.wav
+	monster_step2	data/sounds/monster_step2.wav
+	zombie_step1	data/sounds/zombie_step1.wav
+	zombie_step2	data/sounds/zombie_step2.wav
+	zombie_attack	data/sounds/zombie_attack.ogg
+}
